@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura | Agentic AI Interior Design</title>
+    <meta name="description" content="Personalized interior design using AI, computer vision, and augmented reality.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Aura Design</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">Designer</a>
+            <a href="#">AR View</a>
+            <a href="#">Projects</a>
+        </div>
+        <div class="profile-pic">
+            <img src="https://ui-avatars.com/api/?name=User&background=random" alt="User">
+        </div>
+    </nav>
+
+    <main class="dashboard">
+        <section class="upload-section glass-panel">
+            <h2>Start Your Design Journey</h2>
+            <p>Upload a photo of your room to let our AI agent analyze the space.</p>
+            
+            <form id="upload-form" class="upload-area">
+                <input type="file" id="room-image" name="image" accept="image/*" hidden>
+                <label for="room-image" class="upload-label" id="drop-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span>Drag & drop image here or click to browse</span>
+                </label>
+                
+                <div class="preferences">
+                    <label for="style-pref">Preferred Style:</label>
+                    <input type="text" id="style-pref" name="preferences" placeholder="e.g., Mid-century Modern, Minimalist, Industrial" class="glass-input">
+                </div>
+                
+                <button type="submit" class="btn-primary" id="analyze-btn">
+                    <span>Generate AI Design</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <div id="image-preview" class="hidden">
+                <img id="preview-img" src="" alt="Room Preview">
+                <button id="reset-btn" class="btn-icon"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div id="loading" class="hidden">
+                <div class="loader"></div>
+                <p id="loading-text">Agent analyzing spatial dimensions...</p>
+            </div>
+        </section>
+
+        <section class="results-section hidden" id="results-panel">
+            <div class="glass-panel results-grid">
+                <div class="vision-analysis">
+                    <h3><i class="fa-solid fa-eye"></i> Vision Analysis</h3>
+                    <div id="vision-stats" class="stats-grid">
+                        <!-- Stats injected here -->
+                    </div>
+                </div>
+                
+                <div class="agent-recommendations">
+                    <h3><i class="fa-solid fa-lightbulb"></i> Agent Recommendations</h3>
+                    <div class="recommendation-content" id="rec-content">
+                        <!-- Recs injected here -->
+                    </div>
+                    
+                    <div class="ar-actions">
+                        <button class="btn-secondary"><i class="fa-solid fa-vr-cardboard"></i> View in AR</button>
+                        <button class="btn-secondary"><i class="fa-solid fa-cart-shopping"></i> Purchase Order</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="chat-section glass-panel">
+            <div class="chat-header">
+                <h3><i class="fa-solid fa-robot"></i> Design Assistant Agent</h3>
+                <span class="status-indicator"></span>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message system">
+                    <p>Hello! I'm your personal AI Design Agent. Upload an image, or ask me any questions about styling your space.</p>
+                </div>
+            </div>
+            <form id="chat-form" class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask about furniture, colors, layout..." class="glass-input">
+                <button type="submit" class="btn-icon send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
